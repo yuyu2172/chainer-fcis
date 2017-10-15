@@ -61,3 +61,20 @@ def mask2whole_mask(mask, bbox, size):
     for i, (m, bb) in enumerate(zip(mask, bbox.astype(np.int32))):
         whole_mask[i, bb[0]:bb[2], bb[1]:bb[3]] = m
     return whole_mask
+
+
+def whole_mask2mask(whole_mask, bbox):
+    """Convert an image-sized array of instance masks into a list.
+
+    Args:
+        whole_mask (array): array of shape (R, H, W)
+        bbox (array): Array of shape (R, 4)
+
+    Returns:
+        [(H_1, W_1), ..., (H_R, W_R)]
+
+    """
+    mask = list()
+    for whole_m, bb in zip(whole_mask, bbox.astype(np.int32)):
+        mask.append(whole_m[bb[0]:bb[2], bb[1]:bb[3]])
+    return mask
