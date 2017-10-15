@@ -38,3 +38,22 @@ def visualize_mask(
     viz_img = viz_img.astype(np.uint8)
     ax.imshow(viz_img)
     return ax
+
+
+def mask2whole_mask(mask, bbox, size):
+    """
+    Args:
+        mask (list): [(H_1, W_1), ..., (H_R, W_R)]
+        bbox (array): (R, 4)
+        size (tuple of ints): (H, W)
+
+    """
+    if len(mask) != len(bbox):
+        raise ValueError('The length of mask and bbox should be the same')
+    R = len(mask)
+    H, W = size
+    whole_mask = np.zeros((R, H, W), dtype=np.bool)
+
+    for i, (m, bb) in enumerate(zip(mask, bbox.astype(np.int32))):
+        whole_mask[i, bb[0]:bb[2], bb[1]:bb[3]] = m
+    return whole_mask
