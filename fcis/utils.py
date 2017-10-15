@@ -74,6 +74,9 @@ def whole_mask2mask(whole_mask, bbox):
         [(H_1, W_1), ..., (H_R, W_R)]
 
     """
+    if len(whole_mask) != len(bbox):
+        raise ValueError(
+            'The length of whole_mask and bbox should be the same')
     mask = list()
     for whole_m, bb in zip(whole_mask, bbox.astype(np.int32)):
         mask.append(whole_m[bb[0]:bb[2], bb[1]:bb[3]])
