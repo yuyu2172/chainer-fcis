@@ -41,7 +41,7 @@ def visualize_mask(
 
 
 def mask2whole_mask(mask, bbox, size):
-    """Convert list representation of instance segmentations to a batch.
+    """Convert list representation of instance masks to an image-sized array.
 
     Args:
         mask (list): [(H_1, W_1), ..., (H_R, W_R)]
