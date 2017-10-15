@@ -41,11 +41,15 @@ def visualize_mask(
 
 
 def mask2whole_mask(mask, bbox, size):
-    """
+    """Convert list representation of instance segmentations to a batch.
+
     Args:
         mask (list): [(H_1, W_1), ..., (H_R, W_R)]
-        bbox (array): (R, 4)
+        bbox (array): Array of shape (R, 4)
         size (tuple of ints): (H, W)
+
+    Returns:
+        array of shape (R, H, W)
 
     """
     if len(mask) != len(bbox):
