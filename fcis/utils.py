@@ -59,7 +59,7 @@ def mask2whole_mask(mask, bbox, size):
     whole_mask = np.zeros((R, H, W), dtype=np.bool)
 
     for i, (m, bb) in enumerate(zip(mask, bbox)):
-        bb = np.round(bbox).astype(np.int32)
+        bb = np.round(bb).astype(np.int32)
         whole_mask[i, bb[0]:bb[2], bb[1]:bb[3]] = m
     return whole_mask
 
@@ -80,6 +80,6 @@ def whole_mask2mask(whole_mask, bbox):
             'The length of whole_mask and bbox should be the same')
     mask = list()
     for whole_m, bb in zip(whole_mask, bbox):
-        bb = np.round(bbox).astype(np.int32)
+        bb = np.round(bb).astype(np.int32)
         mask.append(whole_m[bb[0]:bb[2], bb[1]:bb[3]])
     return mask
