@@ -20,7 +20,7 @@ def eval_instance_segmentation_coco(sizes, pred_bboxes, pred_masks,
                                     pred_labels, pred_scores,
                                     gt_bboxes, gt_masks, gt_labels,
                                     gt_crowdeds=None, gt_areas=None):
-    """
+    """Evaluate instance segmentation based on evaluation code of MS COCO.
 
     Args:
         sizes (iterable of tuple of ints): [(H_1, W_1), ..., (H_N, W_N)]
@@ -247,4 +247,3 @@ def _redirect_stdout(target):
     sys.stdout = target
     yield
     sys.stdout = original
-
