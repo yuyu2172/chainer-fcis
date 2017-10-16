@@ -85,8 +85,8 @@ class COCOInstanceSegmentationDataset(chainer.dataset.DatasetMixin):
         label = np.array([self.cat_ids.index(ann['category_id'])
                           for ann in annotation], dtype=np.int32)
 
-        whole_mask = [self._segm_to_mask(anno['segmentation'], (H, W))
-                      for anno in annotation]
+        whole_mask = np.stack([self._segm_to_mask(anno['segmentation'], (H, W))
+                               for anno in annotation])
         mask = whole_mask2mask(whole_mask, bbox)
 
         crowded = np.array([ann['iscrowd']
