@@ -18,7 +18,7 @@ filepath = osp.abspath(osp.dirname(__file__))
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir')
+    parser.add_argument('--data-dir')
     parser.add_argument('--gpu', default=0)
     parser.add_argument('-m', '--modelpath', default=None)
     args = parser.parse_args()
